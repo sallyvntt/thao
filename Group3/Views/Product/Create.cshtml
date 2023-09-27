@@ -1,7 +1,9 @@
 ﻿@model Lib.Product
 
+
 @{
     ViewData["Title"] = "Create";
+    List<Lib.CatMst> categories = ViewBag.CatMst;
 }
 
 <h1>Create</h1>
@@ -19,7 +21,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Cat_ID" class="control-label"></label>
-                <select asp-for="Cat_ID" class ="form-control" asp-items="ViewBag.Cat_ID"></select>
+                <select id="category" name="category" class="form-control">
+                    @foreach (var item in categories)
+                    {
+                        <option value="@item.Cat_ID">@item.Cat_Name</option>
+                    }
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="Type_ID" class="control-label"></label>

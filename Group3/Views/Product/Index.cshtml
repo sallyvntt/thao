@@ -32,7 +32,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Photo)
+              
             </th>
+          
             <th>
                 @Html.DisplayNameFor(model => model.Detail)
             </th>
@@ -60,9 +62,11 @@
             <td>
                     @Html.DisplayFor(modelItem => product.Price)
             </td>
-            <td>
-                    @Html.DisplayFor(modelItem => product.Photo)
-            </td>
+                <td>
+                     
+                    <img src="@Html.DisplayFor(modelItem => product.Photo)" alt="" style="max-width: 100px; max-height: 100px;" />
+                </td>
+
             <td>
                     @Html.DisplayFor(modelItem => product.Detail)
             </td>
