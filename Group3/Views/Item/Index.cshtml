@@ -1,0 +1,210 @@
+﻿@model IEnumerable<Lib.ItemMst>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_BackendLayout";
+    int i = 1;
+}
+
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+
+    @await Html.PartialAsync("~/Views/Backend/_Aside.cshtml")
+
+    <div class="body-wrapper">
+
+        @await Html.PartialAsync("~/Views/Backend/_Header.cshtml")
+
+        <!-- Change this content if you need to modify -->
+        <div class="col-lg-12 d-flex align-items-stretch">
+            <div class="card w-100">
+                <div class="card-body p-4">
+                    <h5 class="card-title fw-semibold mb-4">Item List</h5>
+                    <a class="btn btn-info" asp-action="Create" asp-controller="Item">Create New Item</a>
+                    <div class="table-responsive">
+                        @if (!string.IsNullOrEmpty(TempData["msg"] as string))
+                        {
+                            <div class="alert alert-success">
+                                @TempData["msg"]
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(TempData["errmsg"] as string))
+                        {
+                            <div class="alert alert-danger">
+                                @TempData["errmsg"]
+                            </div>
+                        }
+                        <table class="table text-nowrap mb-0 align-middle">
+                            <thead class="text-dark fs-4">
+                                <tr class="text-center">
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">#</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Style Code</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Pairs</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Brand ID</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Quantity</h6>
+                                    </th>
+                                    <!-- Add more table headers for other properties -->
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Cat ID</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Prod Quality</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Certify ID</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Prod ID</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">GoldType ID</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Gold Wt</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Stone Wt</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Net Gold</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Wstg Per</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Wstg</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Tot Gross Wt</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Gold Rate</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Gold Amt</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Gold Making</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Stone Making</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Other Making</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Tot Making</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">MRP</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Actions</h6>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="text-center">
+                                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">@i</h6></td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@Html.DisplayFor(modelItem => item.Style_Code)</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@item.Pairs</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@Html.DisplayFor(modelItem => item.Brand_ID)</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@item.Quantity</p>
+                                        </td>
+                                        <!-- Add more table cells for other properties -->
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@Html.DisplayFor(modelItem => item.Cat_ID)</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@Html.DisplayFor(modelItem => item.Prod_Quality)</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@Html.DisplayFor(modelItem => item.Certify_ID)</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@Html.DisplayFor(modelItem => item.Prod_ID)</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@Html.DisplayFor(modelItem => item.GoldType_ID)</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@item.Gold_Wt</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@item.Stone_Wt</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@item.Net_Gold</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@item.Wstg_Per</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@item.Wstg</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@item.Tot_Gross_Wt</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@item.Gold_Rate</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@item.Gold_Amt</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@item.Gold_Making</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@item.Stone_Making</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@item.Other_Making</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@item.Tot_Making</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@item.MRP</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <a class="btn btn-info" asp-route-id="@item.Style_Code" asp-action="Edit" asp-controller="Item">
+                                                <i class="fa fa-gear"></i>
+                                            </a>
+                                            <form asp-action="Delete" asp-controller="Item" method="post" enctype="multipart/form-data">
+                                                <input type="hidden" name="styleCode" value="@item.Style_Code">
+                                                <button type="submit" class="btn btn-danger">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    i++;
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End change -->
+
+    </div>
+</div>
